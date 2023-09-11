@@ -1,0 +1,103 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        :root{
+            --bgcolor: linear-gradient(320deg,#4DD0E1,#E1F5FE,#01579B);
+            --txtclr:#03A9F4;
+        }
+        .txtcolor{
+            color: var(--txtclr)
+        }
+        .bg-color{
+            background: var(--bgcolor) !important;
+        }
+        body{
+            background: var(--bgcolor);
+        }
+        input{
+            font-size: 22px;
+            border: 3px solid #03A9F4;
+            border-radius: 10px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .conv{
+            margin-top: 100px;
+            margin-bottom: 100px;
+            min-height: 400px;
+            transition: all 1s;
+            
+        }
+        .conv:hover{
+            background: black !important;
+            box-shadow: 0px 0px 50px 5px black;
+            transform: scale(1.05);
+            transition: all 1s;
+            color:white !important;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="container-fluid ">
+    <div class="row" >
+        <div class="col-md-10 px-5 mx-auto conv bg-light ">
+            <div class="row-sm-12  text-center my-5" style="font-size: 55px;">
+                TEMPERATURE<b class="txtcolor"> CONVERTOR <i class="fa-solid fa-temperature-half"></i></b>
+            </div>
+            <div class="row  my-2">
+                <div class="col-md-4 col-lg-4 col-sm-12 py-3">
+                    <label class="fs-4">Fahrenheit</label><br><br>
+                    <input type="number" id="fahrenheit" placeholder="Enter temperature">
+                </div>
+    
+                <div class="col-md-4 col-lg-4 col-sm-12 py-3" >
+                    <label class="fs-4">Celsius</label><br><br>
+                    <input type="number" id="celsius" placeholder="Enter temperature">
+                </div>
+    
+                <div class="col-md-4 col-lg-4 col-sm-12  py-3">
+                    <label class="fs-4">Kelvin</label><br><br> 
+                    <input type="number" id="kelvin" placeholder="Enter temperature">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<script>
+    let celsius = document.getElementById('celsius');
+    let fahrenheit = document.getElementById('fahrenheit');
+    let kelvin = document.getElementById('kelvin');
+    celsius.oninput = function () {
+        let f = (parseFloat(celsius.value) * 9) / 5 + 32;
+        fahrenheit.value = parseFloat(f.toFixed(2));
+
+        let k = (parseFloat(celsius.value) + 273.15);
+        kelvin.value = parseFloat(k.toFixed(2));
+    }
+    fahrenheit.oninput = function () {
+        let c = ((parseFloat(
+            fahrenheit.value) - 32) * 5) / 9;
+        celsius.value = parseFloat(c.toFixed(2));
+
+        let k = (parseFloat(
+            fahrenheit.value) - 32) * 5 / 9 + 273.15;
+        kelvin.value = parseFloat(k.toFixed(2));
+    }
+    kelvin.oninput = function () {
+        let f = (parseFloat(
+            kelvin.value) - 273.15) * 9 / 5 + 32;
+        fahrenheit.value = parseFloat(f.toFixed(2));
+
+        let c = (parseFloat(kelvin.value) - 273.15);
+        celsius.value = parseFloat(c.toFixed(2));
+    }
+</script>
+
+
+</body>
+</html>
